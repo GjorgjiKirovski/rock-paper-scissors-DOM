@@ -24,26 +24,45 @@ function computerPlay(){
 }
 
 let output = document.getElementById('result');
+let playerScoreDOM = document.getElementById('user-score');
 let playerScore = 0;
+let computerScoreDOM = document.getElementById('computer-score');
 let computerScore = 0;
 
 function playRound(playerSelection, computerSelection){
+    if(playerScore === 5 || computerScore === 5){
+        playerScoreDOM.textContent = '0';
+        computerScoreDOM.textContent = '0';
+        playerScore = 0;
+        computerScore = 0;
+        while(output.firstChild){
+            output.removeChild(output.lastChild);
+        }
+    }
     let resultPara = document.createElement('p');
     if(playerSelection === computerSelection){
         console.log(`Draw! Player: ${playerSelection}, Computer: ${computerSelection}`);
         resultPara.textContent = `Draw! Player: ${playerSelection}, Computer: ${computerSelection}`;
         output.appendChild(resultPara);
-        return 0;
+        
     }else if(
         (playerSelection === "Rock" && computerSelection === "Paper") ||
         (playerSelection === "Paper" && computerSelection === "Scissors") ||
         (playerSelection === "Scissors" && computerSelection === "Rock")
     ){
         console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
-        return -1;
+        resultPara.textContent = `You Lose! ${computerSelection} beats ${playerSelection}`
+        output.appendChild(resultPara);
+        computerScore++;
+        computerScoreDOM.textContent = computerScore;
+        
     }else{
         console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
-        return 1;
+        resultPara.textContent = `You Win! ${playerSelection} beats ${computerSelection}`;
+        playerScore++;
+        playerScoreDOM.textContent = playerScore;
+        output.appendChild(resultPara);
+        
     }
 }
 

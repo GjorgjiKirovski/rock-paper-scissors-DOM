@@ -18,12 +18,40 @@
 }
 #wrapper #buttons-menu button{
     width:20%;
-    background:darkkhaki;
-    border-radius: 10px;
+    background:lightslategrey;
+    border-radius: 7px;
+    box-shadow: none;
+    border: none;
+    padding:5px 10px;
+    font-size: 1.2em;
 }
+#wrapper #buttons-menu button:active{
+   box-shadow: 2px 2px 5px 2px grey;
+}
+#score{
+    padding-top:40px;
+    font-size: 1.5em;
+    width:30%;
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+}
+#score div{
+    width:100px;
+    height:50px;
+    margin:0 30px;
+    background: lightslategrey;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#score>span{
+    font-size: 1.3rem;
+}
+
 #result{
     min-height:300px;
     padding-top:40px;
-    font-size: 2em;
+    font-size: 1.3em;
     text-align: center;
 }
