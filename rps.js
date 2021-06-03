@@ -1,4 +1,4 @@
-const buttons = document.querySelectorAll('div#wrapper > button');
+const buttons = document.querySelectorAll('div#wrapper>#buttons-menu>button');
 buttons.forEach(button => {
     button.addEventListener('click', e => {
         console.log(e.target.innerText)
@@ -23,11 +23,16 @@ function computerPlay(){
     return play[Math.floor(Math.random()*3)];
 }
 
+let output = document.getElementById('result');
+let playerScore = 0;
+let computerScore = 0;
+
 function playRound(playerSelection, computerSelection){
     let resultPara = document.createElement('p');
     if(playerSelection === computerSelection){
         console.log(`Draw! Player: ${playerSelection}, Computer: ${computerSelection}`);
         resultPara.textContent = `Draw! Player: ${playerSelection}, Computer: ${computerSelection}`;
+        output.appendChild(resultPara);
         return 0;
     }else if(
         (playerSelection === "Rock" && computerSelection === "Paper") ||
