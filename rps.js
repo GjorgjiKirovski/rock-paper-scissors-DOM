@@ -31,6 +31,9 @@ let computerScore = 0;
 
 function playRound(playerSelection, computerSelection){
     if(playerScore === 5 || computerScore === 5){
+        document.querySelectorAll(".score-div").forEach(box => {
+            box.style.background = "lightslategrey";
+        })
         playerScoreDOM.textContent = '0';
         computerScoreDOM.textContent = '0';
         playerScore = 0;
@@ -38,6 +41,7 @@ function playRound(playerSelection, computerSelection){
         while(output.firstChild){
             output.removeChild(output.lastChild);
         }
+        
     }
     let resultPara = document.createElement('p');
     if(playerSelection === computerSelection){
@@ -63,6 +67,13 @@ function playRound(playerSelection, computerSelection){
         playerScoreDOM.textContent = playerScore;
         output.appendChild(resultPara);
         
+    }
+    if(playerScore === 5){
+        document.querySelector('#score>div:first-of-type').style.background = 'green';
+        document.querySelector('#score>div:last-of-type').style.background = 'red';
+    }else if(computerScore === 5){
+        document.querySelector('#score>div:first-of-type').style.background = 'red';
+        document.querySelector('#score>div:last-of-type').style.background = 'green';
     }
 }
 
